@@ -10,15 +10,4 @@
 <p>un joueur se bat contre deux bots. le joueur peut faire differante action, le combat se termine lorsque le joueur meurt ou s il a tue les deux bots</p>
 
 <h2>app_3</h2>
-<p></p>
-
-<h2>class : </h2>
-        <p>PLayer < HumanPlayer</p>
-<h3>attributs : </h3>
-name
-life points
-<h3>methodes : </h3>
-<p>show_state
-get_damage
-attacks
-compute_damage</p>
+<p>1 vs 10</p>

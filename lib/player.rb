@@ -1,7 +1,7 @@
 #parent
 #class Player qui permet de creer un joueur avec 10 point de vie 
 class Player 
-    attr_accessor :name, :life_points
+    attr_accessor :life_points, :name
 
     #un joueur a un nom et de la vie : 10 pour tout le monde
     def initialize(name)
@@ -21,7 +21,7 @@ class Player
         #initialise la vie a 0 pour ne pas avoir de nombre negatif
         if @life_points <= 0
             @life_points = 0
-            puts "Le joueur #{@name} à été tué"
+            puts "le joueur #{@name} a ete tue"
             puts ""
         end
     end
@@ -44,36 +44,37 @@ class Player
 end
 
 #class enfant de player recupere nom et point de vie
-# 
 class HumanPlayer < Player
     attr_accessor :weapon_level
 
-    #class enfant donc herite des attributs de Player
+    # initialize HumanPlayer avec 100 points de vie et une arme niveau 1
     def initialize(name)
+        super(name)
         @weapon_level = 1
         @life_points = 100
-        super(name)
     end
-    binding pry
+
     #affiche nom point de vie et niveau de larme du joueur
     def show_state
         puts "#{@name} a #{@life_points} points de vie et une arme de niveau #{@weapon_level}"
     end
 
-    #les degats sont toujours aleatoir mais proportionnel au niveau de l arme
+    #les degats sont toujours aleatoire mais proportionnel au niveau de l arme
     def compute_damage
         rand(1..6) * @weapon_level
     end
 
-    #choisi une amre au hazard et la prend si meilleur que arme actuel
+    #choisi une amre au hazard et la prend si meilleur qu arme actuel
     def search_weapon
         new_weapon_level = rand(1..6)
         puts "#{name} a trouve une arme de niveau #{new_weapon_level}"
         if new_weapon_level > @weapon_level
             @weapon_level = new_weapon_level
             puts "il fait un changement d arme"
+            puts ""
         else
             puts "pas de changement d arme"
+            puts ""
         end
     end
 
@@ -83,16 +84,19 @@ class HumanPlayer < Player
         #pas de vie
         if use_health_pack == 1
             puts "rien ne ce passe"
+            puts ""
         #un gros pack de vie verif life ne depasse pas 100
         elsif use_health_pack == 6
             @life_points += 80
             @life_points = 100 if @life_points > 100
             puts "tu te heal pour 80HP"
+            puts ""
         #un moyen pack de vie verif life ne depasse pas 100
         else
             @life_points += 50
             @life_points = 100 if @life_points > 100
             puts "tu te heal pour 50HP"
+            puts ""
         end
     end
 end

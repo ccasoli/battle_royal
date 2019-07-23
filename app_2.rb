@@ -1,8 +1,8 @@
 require 'bundler'
 Bundler.require
 
-require_relative 'lib/game'
 require_relative 'lib/player'
+require_relative 'lib/game'
 
 #acceuil
 puts "--------------------------"
@@ -19,18 +19,19 @@ player1 = HumanPlayer.new(input_name)
 jose = Player.new("jose")
 josiane = Player.new("josiane")
 ennemies = [jose, josiane]
-
-binding pry
+counter = 1
 
 #le combat commence ici
 while player1.life_points > 0 && (jose.life_points > 0 || josiane.life_points > 0)
-    #menu
     player1.show_state
+    #menu
+    puts "         tour#{counter}"
+    counter+=1
     puts "--------------------------"
     puts "quel action veut tu faire ?"
     puts ""
     puts "a - chercher une meilleure arme"
-    puts "s - chercher a se soigner"
+    puts "s - esseyer de se soigner"
     puts ""
     puts "attaquer un joueur en vue : "
     print "0- "
@@ -43,8 +44,9 @@ while player1.life_points > 0 && (jose.life_points > 0 || josiane.life_points > 
     input_action = gets.chomp
     puts "--------------------------"
     while input_action != "a" && input_action != "s" && input_action != "0" && input_action != "1"
-        puts "choisir selon menu : "
+        print "choisir selon menu : "
         input_action = gets.chomp
+        puts "--------------------------"
     end
     if input_action == "a"
         player1.search_weapon

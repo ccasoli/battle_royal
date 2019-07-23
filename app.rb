@@ -4,22 +4,20 @@ Bundler.require
 require_relative 'lib/player'
 require_relative 'lib/game'
 
-pierre = Player.new("pierre")
-clement = Player.new("clement")
+jose = Player.new("jose")
+josiane = Player.new("josiane")
 
-while pierre.life_points > 0 && clement.life_points > 0
+while jose.life_points > 0 && josiane.life_points > 0
     #rencontre des joueurs et affiche etat
     puts "      etat des 2 joueurs : "
-    pierre.show_state
-    clement.show_state
+    jose.show_state
+    josiane.show_state
     puts "---------------------------"
 
     #on les fait attaquer chaqu un son tour
     puts "      phase d attaque : "
-    pierre.attacks(clement)
-    break if clement.life_points == 0
-    clement.attacks(pierre)
+    jose.attacks(josiane)
+    break if josiane.life_points == 0
+    josiane.attacks(jose)
     puts "---------------------------"
 end
-
-binding pry

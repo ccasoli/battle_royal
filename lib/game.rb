@@ -48,8 +48,9 @@ class Game
         puts "--------------------------"
         print "tu choisi : "
         input_action = gets.chomp
+        ennemi_length = @ennemies_in_sight.length - 1
         puts "--------------------------"
-        while input_action != "a" && input_action != "s" && input_action.to_i < 0 && input_action.to_i > @ennemies.length
+        while input_action != "a" && input_action != "s" && input_action.to_i < 0 && input_action.to_i > ennemi_length
             print "choisir selon menu : "
             input_action = gets.chomp
             puts "--------------------------"
@@ -79,13 +80,12 @@ class Game
             print "un ennemie approche : "
             player_sight.show_state
         else
-            print "deux ennemies en approche : "
+            puts "deux ennemies en approche : "
             2.times do
                 ennemies_number = rand(1..100)
                 player_sight = Player.new("player_#{ennemies_number}b")
                 @ennemies_in_sight << player_sight
                 player_sight.show_state
-                print ", "
             end
         end
     end
